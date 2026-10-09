@@ -10,7 +10,20 @@ opts.add_argument("--headless=new")
 opts.add_argument("--no-sandbox")
 opts.add_argument("--disable-dev-shm-usage")
 # optioneel: mobielprofiel, zelfde als jouw test
-opts.add_experimental_option("mobileEmulation", {"deviceName": "iPhone X"})
+opts.add_experimental_option("mobileEmulation", {
+    "deviceMetrics": {
+        "width": 375,
+        "height": 812,
+        "pixelRatio": 3,
+        "mobile": True,
+        "touch": True
+    },
+    "userAgent": (
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) "
+        "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+        "Version/16.0 Mobile/15E148 Safari/604.1"
+    )
+})
 opts.set_capability("goog:loggingPrefs", {"browser": "ALL"})
 
 driver = webdriver.Chrome(options=opts)
